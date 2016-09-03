@@ -1,0 +1,24 @@
+# roles/web/nginx/tasks/configure.yml
+#
+
+- name: Create nginx root folder
+  file: path={{ nginx.root }} owner='www-data' group='www-data' state=directory
+  notify: Reload nginx
+
+- name: Remove default nginx vhost symlink
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: Drop custom config files
+  template: src=files/service/web/{{ item }}.j2 dest=/etc/nginx/{{ item }} owner=root group=root mode=0644 backup=yes
+  with_items: nginx.web.conf
+
+- name: Drop redirector config files
+  template: src=files/app/redirector/{{ item }}.j2 dest=/etc/nginx/{{ item }} owner=root group=root mode=0644 backup=yes
+  when: '{{ nginx.web.tier | bool }}'
+  with_items: nginx.web.redir
+
+- name: Drop static files
+  template: src=files/service/web/{{ item }} dest={{ nginx.root }}/{{ item }} owner=www-data group=www-data mode=0644
+  with_items: nginx.web.files
+
+- meta: flush_handlers
