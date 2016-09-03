@@ -1,0 +1,21 @@
+#
+# demo groups
+
+localhost env=demo 
+
+# Environment
+#
+[amazon:children]
+demo
+
+[demo:children]
+web
+
+
+# Web
+#
+[web:children]
+nginx-web
+
+[nginx-web]
+sparab-Inspiron-N5110

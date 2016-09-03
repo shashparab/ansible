@@ -1,0 +1,6 @@
+# Web Tier
+
+- hosts: nginx-web
+  roles:
+    - web/nginx
+  tags: web
