@@ -1,0 +1,10 @@
+- include: configure.yml
+  tags: config
+
+- include: vhost.yml
+  when: nginx_site is defined
+
+- name: Start nginx
+  service: name=nginx state=started enabled=yes
+
+- meta: flush_handlers
