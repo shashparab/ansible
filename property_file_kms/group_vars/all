@@ -1,0 +1,11 @@
+kms_key: arn:aws:kms:eu-west-1:994331778543:key/e3cc28a6-7ba6-4da1-8953-1cb1a2855c23
+
+fh_cloudfront_hostnames: "d3l6n8hsebkot8.cloudfront.net,d25hqtnqp5nl24.cloudfront.net,d1ycl3zewbvuig.cloudfront.net,duetogsaij514.cloudfront.net"
+
+es_endpoint: "https://aa1cd99a00ce44aa9e4812b1aa3e2b2c.eu-west-1.aws.found.io:9243"
+es_username: "search-client-{{ env }}"
+
+
+kms:
+  - fh_password
+  - es_password

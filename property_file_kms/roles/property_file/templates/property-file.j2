@@ -1,0 +1,29 @@
+environment.name={{env}}
+
+# TODO: These should probably be encrypted and then changed?
+fh.pswd={{ fh_password }}
+fh.cloudfront.hostnames={{ fh_cloudfront_hostnames }}
+
+es.endpoint={{ es_endpoint }}
+es.username={{ es_username }}
+es.password={{ es_password }}
+
+es.index={{ es_index }}
+es.user.list={{ es_user_list }}
+es.only={{ es_only }}
+
+db.user.list={{ db_user_list }}
+db.only={{ db_only }}
+
+suggestedtags.autosuggest.timeout={{ suggestedtags_autosuggest_timeout }}
+suggestedtags.category.timeout={{ suggestedtags_category_timeout }}
+
+featureflagsEntertainingSearchEnabled={{ featureflagsEntertainingSearchEnabled }}
+featureflagsEntertainingBrowseEnabled={{ featureflagsEntertainingBrowseEnabled }}
+
+search.dax.cache.hostname={{search_dax_cache_hostname}}
+searchDaxEnabled={{searchDaxEnabled}}
+kms.endpoint={{kms_endpoint}}
+
+elasticache.hostname={{ elasticache_hostname }}
+retry.policy=${RETRY_POLICY:OFF}

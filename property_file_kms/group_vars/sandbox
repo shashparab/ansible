@@ -1,0 +1,31 @@
+env: "sandbox"
+custom_domain_name: "sandbox.wtrecom.com"
+
+# AWS kms key for encrypting Plaintext
+kms_key : arn:aws:kms:eu-west-1:994331778543:key/e3cc28a6-7ba6-4da1-8953-1cb1a2855c23
+
+# Fredhopper details
+fh_cloudfront_hostnames : "d3l6n8hsebkot8.cloudfront.net,d25hqtnqp5nl24.cloudfront.net,d1ycl3zewbvuig.cloudfront.net,duetogsaij514.cloudfront.net"
+
+# Elastic search details
+es_endpoint   : "https://aa1cd99a00ce44aa9e4812b1aa3e2b2c.eu-west-1.aws.found.io:9243"
+es_username   : "search-client-{{env}}"
+es_index      : "catalog-alias-live-{{env}}"
+es_user_list  : "378024,378026,399541"
+es_only       : "false"
+
+db_user_list  : "825453,825454,825455,825456,825457,825458,825459,825460,825461,825462"
+db_only       : "true"
+
+suggestedtags_autosuggest_timeout : "20000"
+suggestedtags_category_timeout    : "500"
+
+featureflagsEntertainingSearchEnabled : "true"
+featureflagsEntertainingBrowseEnabled : "true"
+
+search_dax_cache_hostname : "ecom-su-{{env}}-dax.{{custom_domain_name}}:8111"
+searchDaxEnabled          : "true"
+kms_endpoint              : "https://kms.eu-west-1.amazonaws.com"
+
+elasticache_hostname  : "ecom-redis-{{env}}.{{custom_domain_name}}"
+retry_policy          : "${RETRY_POLICY:OFF}"

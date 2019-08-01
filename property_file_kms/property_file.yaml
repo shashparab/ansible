@@ -1,0 +1,4 @@
+- hosts: localhost
+  roles:
+    - property_file
+

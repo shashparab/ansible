@@ -1,0 +1,21 @@
+# Create property file
+
+- name: Delete var file
+  file:
+    path: files/kms_encrypted_values.yaml
+    state: absent
+
+- debug:
+    msg: "{{ lookup('hashi_vault', 'secret=secret/search/dev/:{{item}} token=s.G18eV1UrgSdSs7Wm2r1jqBtx url=http://vault.sandbox.wtrecom.com')}}"
+  with_items: "{{kms}}"
+
+- name: kms encrypt
+  debug:
+    msg: "{{ lookup('hashi_vault', 'secret=secret/search/dev/:{{item}} token=s.G18eV1UrgSdSs7Wm2r1jqBtx url=http://vault.sandbox.wtrecom.com') | kms_encrypt_modified(item, kms_key) }}"
+  with_items: "{{kms}}"
+
+- name: include kms encrypted var file
+  include_vars: files/kms_encrypted_values.yaml
+
+- name: Create {{service}} service property file for {{env}} environment.
+  template: src=property-file.j2 dest=./{{service}}-{{env}}.properties
